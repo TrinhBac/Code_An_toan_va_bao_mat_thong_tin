@@ -42,16 +42,16 @@ string toUpperCase(string str){
 //cach 1: tim modulo nghich dao (a^-1 mod m) don gian nhat
 int modInverse(int a, int m)
 {
-    for (int x=-2*m;x<2*m;x++)
-        if( ((a%m)*(x%m)) % m == 1)
-            return x;
+    for(int i=1;i<m;i++)
+        if((a*i)%m == 1)
+            return i;
 }
 
 int mod(int a, int b){
     if(a<0){
         if(a*1.0/b == a/b)
             return 0;
-        else return (26 - abs(a)%b);
+        else return (b - abs(a)%b);
     }else
         return a%b;
 }

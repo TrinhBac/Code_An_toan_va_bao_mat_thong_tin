@@ -41,7 +41,7 @@ int mod(int a, int b){
     if(a<0){
         if(a*1.0/b == a/b)
             return 0;
-        else return (26 - abs(a)%b);
+        else return (b - abs(a)%b);
     }else
         return a%b;
 }
