@@ -23,15 +23,6 @@ string encode(){
     return banMa;
 }
 
-string decode(){
-    int c=0, k=khoa.length();
-    for(int i=0;i<chuoiMaHoa.length();i++){
-        giaiMa+=char(65 + mod(chuoiMaHoa[i]-khoa[c%k]-65*2,26));
-        c++;
-    }
-    return giaiMa;
-}
-
 string timKhoa(){
     string khoa = "";
     string banRo = "PSYCHE";
@@ -52,8 +43,8 @@ int main()
     cout<<"Nhap chuoi can kiem tra: ";
     getline(cin, chuoiMaHoa);
     if(chuoiMaHoa == banMa)
-        cout<<"Yes"<<endl;
-    else cout<<"No"<<endl;
+        cout<<"Ban nhap dung"<<endl;
+    else cout<<"Ban nhap sai"<<endl;
     cout<<"Khoa la: "<<timKhoa()<<endl;
 
 	return 0;

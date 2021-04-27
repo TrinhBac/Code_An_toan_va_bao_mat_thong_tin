@@ -6,7 +6,6 @@ string chuoiGoc, chuoiMaHoa, banMa="", giaiMa="";
 //chuoiGoc --> banMa | chuoiMaHoa --> giaiMa
 int a,b,k;
 
-//cach 1: tim modulo nghich dao (a^-1 mod m) don gian nhat
 int modInverse(int a, int m)
 {
     for(int i=1;i<m;i++)
@@ -29,13 +28,6 @@ string encode(){
     return banMa;
 }
 
-string decode(){
-    int k=modInverse(a,26);
-    for(int i=0;i<chuoiMaHoa.length();i++)
-        giaiMa+=char(65 + mod(k*(chuoiMaHoa[i]-65-b),26));
-    return giaiMa;
-}
-
 int main()
 {
     chuoiGoc = "TAURUS";
@@ -44,9 +36,9 @@ int main()
     cout<<"Nhap chuoi can so sanh: ";
     getline(cin, chuoiMaHoa);
     if(chuoiMaHoa == banMa)
-        cout<<"Yes"<<endl;
+        cout<<"Ban nhap dung"<<endl;
     else
-        cout<<"No"<<endl;
+        cout<<"Ban nhap sai"<<endl;
     printf("K(giai ma) = (%d, %d)",modInverse(17,26),5);
 
 	return 0;
