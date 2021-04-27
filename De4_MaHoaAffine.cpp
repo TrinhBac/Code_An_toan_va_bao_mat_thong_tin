@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string chuoiGoc, chuoiMaHoa, banMa="", giaiMa="";
+//chuoiGoc --> banMa | chuoiMaHoa --> giaiMa
+int a,b,k;
+
+//cach 1: tim modulo nghich dao (a^-1 mod m) don gian nhat
+int modInverse(int a, int m)
+{
+    for(int i=1;i<m;i++)
+        if((a*i)%m == 1)
+            return i;
+}
+
+int mod(int a, int b){
+    if(a<0){
+        if(a*1.0/b == a/b)
+            return 0;
+        else return (26 - abs(a)%b);
+    }else
+        return a%b;
+}
+
+string encode(){
+    for(int i=0;i<chuoiGoc.length();i++)
+        banMa+=char(65 + mod(a*(chuoiGoc[i]-65)+ b,26));
+    return banMa;
+}
+
+string decode(){
+    int k=modInverse(a,26);
+    for(int i=0;i<chuoiMaHoa.length();i++)
+        giaiMa+=char(65 + mod(k*(chuoiMaHoa[i]-65-b),26));
+    return giaiMa;
+}
+
+int main()
+{
+    chuoiGoc = "TAURUS";
+    a=17, b=5;
+    cout<<"--> Ma hoa "+chuoiGoc+" la: "+encode()<<endl;
+    cout<<"Nhap chuoi can so sanh: ";
+    getline(cin, chuoiMaHoa);
+    if(chuoiMaHoa == banMa)
+        cout<<"Yes"<<endl;
+    else
+        cout<<"No"<<endl;
+    printf("K(giai ma) = (%d, %d)",modInverse(17,26),5);
+
+	return 0;
+}
